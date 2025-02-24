@@ -1,9 +1,9 @@
 ﻿using ApiRestVisualContact.Model;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ApiRestVisualContact.Controllers
+namespace ApiRestVisualContact.service
 {
-    public interface IApiVisualController
+    public interface IAgente
     {
         Task<ActionResult<Agente>> AddAgente(Agente newAgente);
         Task<IActionResult> DeleteAgente(long Id);

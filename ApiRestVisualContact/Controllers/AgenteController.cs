@@ -1,5 +1,6 @@
 ﻿using ApiRestVisualContact.Migrations;
 using ApiRestVisualContact.Model;
+using ApiRestVisualContact.service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -10,12 +11,12 @@ namespace ApiRestVisualContact.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApiVisualController : ControllerBase, IApiVisualController
+    public class AgenteController : ControllerBase, IAgente
     {
 
         private readonly VisualContactDBContext _dbContext;
 
-        public ApiVisualController (VisualContactDBContext dbContext)
+        public AgenteController(VisualContactDBContext dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
@@ -51,14 +52,15 @@ namespace ApiRestVisualContact.Controllers
         [HttpPut("{Id}")]
         public async Task<IActionResult> UpdateAgente(long Id, Agente AgenteActual)
         {
-            
             var agente = await _dbContext.agentesdb.FindAsync(Id);
             if (agente is null)
                 return NotFound();
 
             agente.Nombre = AgenteActual.Nombre;
             agente.estado = AgenteActual.estado;
-            agente.fecha = AgenteActual.fecha;
+            //agente.Clientes = AgenteActual.Clientes;
+
+            await _dbContext.SaveChangesAsync();
 
             return NoContent();
         }

@@ -18,12 +18,25 @@ namespace ApiRestVisualContact.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    estado = table.Column<int>(type: "int", nullable: false),
-                    fecha = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    estado = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_agentesdb", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "clientesdb",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    fecha = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_clientesdb", x => x.Id);
                 });
         }
 
@@ -32,6 +45,9 @@ namespace ApiRestVisualContact.Migrations
         {
             migrationBuilder.DropTable(
                 name: "agentesdb");
+
+            migrationBuilder.DropTable(
+                name: "clientesdb");
         }
     }
 }

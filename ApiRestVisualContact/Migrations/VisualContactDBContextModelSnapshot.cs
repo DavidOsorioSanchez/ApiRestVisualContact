@@ -36,12 +36,28 @@ namespace ApiRestVisualContact.Migrations
                     b.Property<int>("estado")
                         .HasColumnType("int");
 
+                    b.HasKey("Id");
+
+                    b.ToTable("agentesdb");
+                });
+
+            modelBuilder.Entity("ApiRestVisualContact.Model.Cliente", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("fecha")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("agentesdb");
+                    b.ToTable("clientesdb");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,6 +8,7 @@ namespace ApiRestVisualContact.Migrations
 
 
         public DbSet<Agente> agentesdb => Set<Agente>();
+        public DbSet<Cliente> clientesdb => Set<Cliente>();
 
     }
         //internal class VisualContactDBContext : DbContext
