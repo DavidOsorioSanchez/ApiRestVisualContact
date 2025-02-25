@@ -6,15 +6,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddDefaultPolicy(builder =>
-//    {
-//        builder.WithOrigins("https://localhost:7001")
-//               .AllowAnyMethod()
-//               .AllowAnyHeader();
-//    });
-//});
+//solo para modo desarrollo
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000") 
+                   .AllowAnyMethod() 
+                   .AllowAnyHeader();
+        });
+});
+
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -48,5 +51,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//solo en modo desarrollo
+app.UseCors("AllowSpecificOrigin");
 
 app.Run();
