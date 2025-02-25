@@ -1,6 +1,6 @@
-# @ApiRestVisualContact_HostAddress = http://localhost:5231
+# @ApiRestVisualContact_HostAddress = http://localhost:7001
 
-# GET {{ApiRestVisualContact_HostAddress}}/weatherforecast/
+# GET {{ApiRestVisualContact_HostAddress}}/api/Cliente/
 # Accept: application/json
 
-# ###
+###

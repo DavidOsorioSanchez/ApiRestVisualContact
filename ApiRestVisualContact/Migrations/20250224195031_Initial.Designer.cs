@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiRestVisualContact.Migrations
 {
     [DbContext(typeof(VisualContactDBContext))]
-    [Migration("20250224123019_Initial")]
+    [Migration("20250224195031_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

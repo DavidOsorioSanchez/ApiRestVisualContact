@@ -64,9 +64,10 @@ namespace ApiRestVisualContact.Controllers
             if (cliente is null)
                 return NotFound();
 
+
             cliente.Nombre = ClienteActual.Nombre;
             cliente.fecha = ClienteActual.fecha;
-
+            await _dbContext.SaveChangesAsync();
             return NoContent();
         }
     }
